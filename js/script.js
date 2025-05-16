@@ -1,15 +1,10 @@
 
 let index = 0;
 carousel();
-
 function carousel() {
-  let i;
-  let images = document.querySelectorAll(".carousel img");
-  for (i = 0; i < images.length; i++) {
-    images[i].classList.remove("active");
-  }
-  index++;
-  if (index > images.length) { index = 1; }
-  images[index - 1].classList.add("active");
+  let imgs = document.querySelectorAll(".carousel img");
+  imgs.forEach(img => img.classList.remove("active"));
+  index = (index + 1) % imgs.length;
+  imgs[index].classList.add("active");
   setTimeout(carousel, 4000);
 }
